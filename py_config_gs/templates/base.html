@@ -16,8 +16,11 @@
     <div class="header-container">
       <img src="{{ url_for('static', filename='images/OpenIPCFPV.png') }}" alt="Logo" class="header-logo">
       <h1>OpenIPC Improver ConfigMan GS</h1>
+      <button id="dark-mode-toggle">Toggle Dark Mode</button>
     </div>
 
+      
+  
     <div class="tabs">
         <ul>
             <li><a href="{{ url_for('home') }}">Home</a></li>
@@ -48,10 +51,88 @@
     {% endblock %}
   </main>
 
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleButton = document.getElementById('dark-mode-toggle');
+
+    toggleButton.addEventListener('click', () => {
+        // Log to check if the button is clicked
+        console.log('Dark mode toggle button clicked.');
+
+        // Toggle dark mode class on the body
+        document.body.classList.toggle('dark-mode');
+
+        // Toggle dark mode class on config sections
+        const configSections = document.querySelectorAll('.config-section');
+        configSections.forEach(section => {
+            section.classList.toggle('dark-mode');
+        });
+
+        // Toggle dark mode class on tabs
+        const tabs = document.querySelector('.tabs');
+        if (tabs) {
+            tabs.classList.toggle('dark-mode');
+            console.log('Toggled dark mode on tabs.');
+        }
+
+        // Toggle dark mode class on the footer
+        const footer = document.querySelector('.footer'); // Get the footer
+        if (footer) {
+            footer.classList.toggle('dark-mode');
+            console.log('Toggled dark mode on footer.');
+        }
+
+        // Toggle dark mode class on thead
+        const thead = document.querySelector('.config-section table thead');
+        if (thead) {
+            thead.classList.toggle('dark-mode');
+            console.log('Toggled dark mode on thead.');
+        }
+
+        // Save the user's preference in localStorage
+        if (document.body.classList.contains('dark-mode')) {
+            localStorage.setItem('theme', 'dark');
+        } else {
+            localStorage.setItem('theme', 'light');
+        }
+    });
+
+    // Load the user's preference on page load
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        
+        const configSections = document.querySelectorAll('.config-section');
+        configSections.forEach(section => {
+            section.classList.add('dark-mode');
+        });
+
+        const tabs = document.querySelector('.tabs');
+        if (tabs) {
+            tabs.classList.add('dark-mode');
+        }
+
+        // Also add dark mode to the footer if the saved theme is dark
+        const footer = document.querySelector('.footer');
+        if (footer) {
+            footer.classList.add('dark-mode');
+        }
+
+        // Also add dark mode to thead if the saved theme is dark
+        const thead = document.querySelector('.config-section table thead');
+        if (thead) {
+            thead.classList.add('dark-mode');
+        }
+    }
+});
+</script>
+
+  
   <!-- Footer Section -->
-  <footer>
+  <footer class="footer">
     <p>&copy; 2024 OpenIPC Improver ConfigMan GS,  version: {{ version }}</p>
 </footer>
+
 
 </body>
 </html>

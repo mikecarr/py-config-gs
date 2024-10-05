@@ -5,14 +5,28 @@ body {
     padding: 20px;
     background-color: #f4f4f4;
     line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+body.dark-mode {
+    background-color: #121212; /* Dark background */
+    color: #e0e0e0; /* Light text color */
 }
 
 h1, h2 {
     color: #333;
 }
 
+h1.dark-mode, h2.dark-mode {
+    color: #e0e0e0; /* Light text color for headings */
+}
+
 p {
     color: #555;
+}
+
+p.dark-mode {
+    color: #e0e0e0; /* Light text color for paragraphs */
 }
 
 /* Tabs */
@@ -42,11 +56,23 @@ p {
     text-align: center;
     border-radius: 5px;
     margin-right: 5px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
 }
 
 .tabs a:hover {
     background-color: #d1d1d1;
+}
+
+.tabs.dark-mode {
+    background-color: #1e1e1e; /* Dark tab background */
+}
+
+.tabs a.dark-mode {
+    color: #e0e0e0; /* Light text color for tab links */
+}
+
+.tabs a:hover.dark-mode {
+    background-color: #333; /* Darker hover color */
 }
 
 /* Content Area */
@@ -55,6 +81,11 @@ p {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.content.dark-mode {
+    background: #1e1e1e; /* Dark background for content */
+    color: #e0e0e0; /* Light text color */
 }
 
 .content ul {
@@ -73,6 +104,10 @@ p {
 
 .content a:hover {
     text-decoration: underline;
+}
+
+.content a.dark-mode {
+    color: #009688; /* Adjust link color for dark mode */
 }
 
 /* Video Container */
@@ -98,6 +133,10 @@ footer {
     flex-shrink: 0; /* Ensure the footer is not squeezed by the content */
 }
 
+footer.dark-mode {
+    background-color: #1e1e1e; /* Dark footer background */
+}
+
 /* Styled Box */
 .styled-box {
     border: 1px solid #ccc;
@@ -105,7 +144,11 @@ footer {
     padding: 10px;
     margin: 15px 0;
     border-radius: 5px;
-    font-family: Arial, sans-serif;
+}
+
+.styled-box.dark-mode {
+    border: 1px solid #444; /* Dark border */
+    background-color: #222; /* Darker background */
 }
 
 /* Warning Styles */
@@ -114,6 +157,10 @@ footer {
     font-weight: bold;
     font-style: italic;
     margin-bottom: 20px;
+}
+
+.warning.dark-mode {
+    color: #ffcc00; /* Yellow color for dark mode */
 }
 
 /* Table Styles */
@@ -150,6 +197,15 @@ table td:nth-child(3) {
     width: 50%; /* Actions column */
 }
 
+table.dark-mode {
+    background-color: #1e1e1e; /* Dark table background */
+}
+
+table th.dark-mode {
+    background-color: #333; /* Darker header background */
+    color: #e0e0e0; /* Light text color */
+}
+
 /* Status Styles */
 .status-enabled {
     color: green;
@@ -175,6 +231,11 @@ button {
 
 button[type="submit"]:hover {
     background-color: #0056b3;
+}
+
+button.dark-mode {
+    background-color: #444; /* Darker button background */
+    color: #e0e0e0; /* Light text color */
 }
 
 /* Form Styles */
@@ -211,7 +272,6 @@ form {
     }
 }
 
-
 /* Configuration Files Section */
 .config-section {
     border: 1px solid #ccc; /* Thin border around the section */
@@ -221,10 +281,18 @@ form {
     background-color: #fff;
 }
 
-.config-section h2 {
-    margin-top: 0; /* Remove extra top margin */
-    font-size: 24px;
-    color: #333;
+.config-section.dark-mode {
+    background-color: #333; /* Dark background for config sections */
+    color: #e0e0e0; /* Light text color */
+}
+
+/* Additional styles for the content within config sections */
+.config-section h2, 
+.config-section h3, 
+.config-section p, 
+.config-section td, 
+.config-section th {
+    color: inherit; /* Use inherited color for consistency */
 }
 
 /* Configuration Content */
@@ -237,8 +305,12 @@ form {
 /* Individual Config Items */
 .config-item h3 {
     font-size: 20px;
-    margin: 0 0 10px 0; /* Space below each heading */
+    margin: 0 0 10px; /* Space below each heading */
     color: #007bff; /* Optional: Add color to the headings */
+}
+
+.config-item h3.dark-mode {
+    color: #80d8ff; /* Light blue color for dark mode */
 }
 
 .config-item p {
@@ -247,14 +319,9 @@ form {
     font-size: 16px;
 }
 
-/* For mobile responsiveness, if needed */
-@media (max-width: 768px) {
-    .config-content {
-        gap: 10px; /* Reduce gap on smaller screens */
-    }
+.config-item p.dark-mode {
+    color: #e0e0e0; /* Light text color */
 }
-
-
 
 /* Header container to hold the logo on the left and center the heading */
 .header-container {
@@ -280,44 +347,28 @@ form {
     text-align: center;
     font-size: 24px;
     color: #333;
-    flex-grow: 1; /* Let the heading take up the remaining space */
+    flex-grow: 1; /* Allow the heading to grow */
 }
 
-/* Adjust the layout on smaller screens */
-@media (max-width: 768px) {
-    .header-container {
-        flex-direction: column; /* Stack the logo and heading vertically */
-    }
-
-    .header-logo {
-        position: static;
-        margin-left: 0;
-        margin-bottom: 10px; /* Add space below the logo when stacked */
-    }
+.header-container h1.dark-mode {
+    color: #e0e0e0; /* Light text color for heading in dark mode */
 }
 
-/* Flash Message Styles */
-.flash-message {
-    background-color: #d1ecf1; /* Light blue background */
-    color: #0c5460; /* Dark blue text */
-    
-    border: 1px solid #4046ed; /* Border to define the area */
-    border-radius: 5px; /* Rounded corners */
-    margin-bottom: 20px; /* Space below the flash message */
-    
-    width: 100%; /* Fill the width of the container */
-    max-width: 100%; /* Ensure it doesn't exceed the viewport width */
-    height: 50px; /* Fixed height */
-    overflow-y: auto; /* Allow vertical scrolling */
-    
-    padding: 10px; /* Padding for inner content */
-    box-sizing: border-box; /* Include padding in the height and width */
+/* Style for buttons in the configuration area */
+.config-button {
+    background-color: #007bff; /* Default button color */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-/* Additional styles for message list */
-.flash-message ul {
-    list-style-type: none; /* Remove default list styling */
-    padding: 0; /* Remove padding */
-    margin: 0; /* Remove margin */
+.config-button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
 }
 
+.config-button.dark-mode {
+    background-color: #444; /* Dark mode button color */
+    color: #e0e0e0; /* Light text color */
+}

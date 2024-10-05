@@ -2,7 +2,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <div class="container">
+<div class="config-section" id="configuration">
     <h1>Playing Video: {{ filename }}</h1>
     <video controls autoplay width="80%" src="{{ url_for('play', filename=filename) }}" type="video/mp4">
       Your browser does not support the video tag.
